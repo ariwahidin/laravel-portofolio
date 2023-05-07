@@ -1,0 +1,41 @@
+@extends('dashboard.layout')
+@section('konten')
+    <div class="pb-3">
+        <a href="{{ route('education.index') }}" class="btn btn-secondary">
+            << Kembali</a>
+    </div>
+    <form action="{{ route('education.update', $data->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="mb-3">
+            <label for="judul" class="form-label">Nama Instansi</label>
+            <input type="text" class="form-control form-control-sm" name="judul" id="judul" aria-describedby="helpId"
+                placeholder="Nama Instansi" value="{{ $data->judul }}">
+        </div>
+        <div class="mb-3">
+            <label for="info1" class="form-label">Prodi</label>
+            <input type="text" class="form-control" name="info2" id="info2" aria-describedby="helpId"
+                placeholder="Nama Prodi" value="{{ $data->info2 }}">
+        </div>
+        <div class="mb-3">
+            <label for="info1" class="form-label">IPK/Nilai Akhir</label>
+            <input type="text" class="form-control" name="info3" id="info3" aria-describedby="helpId"
+                placeholder="IPK/Nilai Akhir" value="{{ $data->info3 }}">
+        </div>
+        <div class="mb-3">
+            <div class="row">
+                <div class="col-auto">Tahun Mulai</div>
+                <div class="col-auto">
+                    <input type="date" class="form-control form-control-sm" name="tanggal_mulai" placeholder="dd/mm/yyy"
+                        value="{{ $data->tgl_mulai }}">
+                </div>
+                <div class="col-auto">Tanggal Lulus</div>
+                <div class="col-auto">
+                    <input type="date" class="form-control form-control-sm" name="tanggal_akhir" placeholder="dd/mm/yyy"
+                        value="{{ $data->tgl_akhir }}">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
+    </form>
+@endsection
